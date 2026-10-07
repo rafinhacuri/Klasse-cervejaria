@@ -43,6 +43,20 @@
         <p class="font-mono text-micro text-malt uppercase">{{ t('moderation') }}</p>
       </div>
     </div>
+
+    <div class="border-t border-line">
+      <p
+        class="mx-auto max-w-7xl px-5 py-5 text-center text-[0.75rem] text-muted sm:px-8 md:text-left">
+        {{ t('credit') }}
+        <a
+          href="https://curi.dev.br"
+          target="_blank"
+          rel="noopener"
+          class="font-medium text-fg underline decoration-line underline-offset-4 transition-colors hover:text-gold hover:decoration-gold">
+          Rafael Curi
+        </a>
+      </p>
+    </div>
   </footer>
 </template>
 
@@ -50,7 +64,8 @@
 {
   "pt": {
     "copyright": "© {year} {name}. Há 16 anos fazendo chope com pioneirismo, experiência e qualidade.",
-    "moderation": "Beba com moderação · Venda proibida para menores de 18 anos"
+    "moderation": "Beba com moderação · Venda proibida para menores de 18 anos",
+    "credit": "Desenvolvido por"
   }
 }
 </i18n>
