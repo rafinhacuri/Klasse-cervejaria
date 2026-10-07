@@ -75,7 +75,7 @@
     </div>
 
     <p
-      class="mt-20 flex justify-between px-5 pb-[0.12em] font-display text-giant font-black text-fg uppercase float-shadow sm:px-8"
+      class="mt-[0.4em] flex justify-between px-5 pb-[0.12em] font-display text-giant font-black text-fg uppercase float-shadow sm:px-8"
       aria-hidden="true">
       <Motion
         v-for="(letter, index) in letters"
