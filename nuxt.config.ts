@@ -52,7 +52,8 @@ export default defineNuxtConfig({
       {
         name: 'Big Shoulders',
         provider: 'google',
-        weights: ['100 900'],
+        global: true,
+        weights: ['400', '600', '700', '800', '900'],
         styles: ['normal'],
         subsets: ['latin', 'latin-ext'],
         providerOptions: { google: { experimental: { variableAxis: { opsz: [['10', '72']] } } } },
@@ -60,7 +61,8 @@ export default defineNuxtConfig({
       {
         name: 'Instrument Sans',
         provider: 'google',
-        weights: ['400 700'],
+        global: true,
+        weights: ['400', '500', '600', '700'],
         styles: ['normal', 'italic'],
         subsets: ['latin', 'latin-ext'],
         providerOptions: { google: { experimental: { variableAxis: { wdth: [['75', '100']] } } } },
@@ -68,6 +70,7 @@ export default defineNuxtConfig({
       {
         name: 'IBM Plex Mono',
         provider: 'google',
+        global: true,
         weights: ['400', '500'],
         styles: ['normal'],
         subsets: ['latin'],
