@@ -73,7 +73,6 @@ const rippleFragment = `
   uniform vec2 uPointerPrev;
   uniform float uPointerForce;
   uniform vec3 uDrop;
-  uniform float uSlosh;
   varying vec2 vUv;
 
   float segment(vec2 p, vec2 a, vec2 b) {
@@ -100,8 +99,6 @@ const rippleFragment = `
     float drop = length((vUv - uDrop.xy) * aspect);
     next -= uDrop.z * (1.0 - smoothstep(0.0, 0.01, drop));
 
-    next += uSlosh * (1.0 - smoothstep(0.0, 0.05, vUv.y));
-    next -= uSlosh * (1.0 - smoothstep(0.0, 0.05, 1.0 - vUv.y));
 
     gl_FragColor = vec4(clamp(next, -4.0, 4.0), state.r, 0.0, 1.0);
   }

@@ -55,7 +55,6 @@ class Surface {
   private targets: [WebGLRenderTarget, WebGLRenderTarget]
   private readonly pointer = { current: new Vector2(-1, -1), previous: new Vector2(-1, -1) }
   private force = 0
-  private sloshing = 0
   private time = 0
   private readonly haze = new Spring(0)
   private readonly dim = new Spring(0)
@@ -116,10 +115,6 @@ class Surface {
     this.pointer.previous.set(-1, -1)
   }
 
-  slosh(velocity: number): void {
-    this.sloshing = Math.max(-0.5, Math.min(0.5, velocity / 5000))
-  }
-
   frame(delta: number, input: SurfaceFrame): void {
     const dt = Math.min(delta, 1 / 30)
     this.time += input.calm ? dt * 0.15 : dt
@@ -162,7 +157,6 @@ class Surface {
     const pop = Math.random() < dt * BUBBLE_POPS_PER_SECOND
     uniforms.uDrop.value.set(Math.random(), Math.random(), pop ? 0.25 + Math.random() * 0.35 : 0)
     uniforms.uPointerForce.value = this.pointer.current.x < 0 ? 0 : this.force
-    uniforms.uSlosh.value = this.sloshing
 
     this.quad.material = this.ripple
     for (let step = 0; step < RIPPLE_STEPS; step++) {
@@ -175,7 +169,6 @@ class Surface {
 
     this.pointer.previous.copy(this.pointer.current)
     this.force *= Math.exp(-dt * 10)
-    this.sloshing *= Math.exp(-dt * 6)
   }
 
   private clearTargets(): void {

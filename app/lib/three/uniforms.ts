@@ -15,7 +15,6 @@ interface RippleUniforms extends Uniforms {
   uPointerPrev: Uniform<Vector2>
   uPointerForce: Uniform<number>
   uDrop: Uniform<Vector3>
-  uSlosh: Uniform<number>
 }
 
 interface BeerUniforms extends Uniforms {
@@ -68,7 +67,6 @@ function rippleUniforms(pointer: Vector2, previous: Vector2): RippleUniforms {
     uPointerPrev: { value: previous },
     uPointerForce: { value: 0 },
     uDrop: { value: new Vector3() },
-    uSlosh: { value: 0 },
   }
 }
 

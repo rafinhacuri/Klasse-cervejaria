@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <section id="visite" ref="section" class="relative overflow-hidden pt-28 sm:pt-40">
+  <section id="visite" ref="section" class="relative overflow-x-clip pt-28 sm:pt-40">
     <div class="mx-auto grid max-w-7xl items-start gap-6 px-5 sm:px-8 lg:grid-cols-[1.2fr_1fr]">
       <Reveal
         class="rounded-[2rem] border border-line bg-ink/60 p-6 shadow-float backdrop-blur-xl sm:p-10">
@@ -75,7 +75,7 @@
     </div>
 
     <p
-      class="mt-20 flex justify-between px-5 font-display text-giant font-black text-fg uppercase float-shadow sm:px-8"
+      class="mt-20 flex justify-between px-5 pb-[0.12em] font-display text-giant font-black text-fg uppercase float-shadow sm:px-8"
       aria-hidden="true">
       <Motion
         v-for="(letter, index) in letters"
@@ -83,7 +83,7 @@
         as="span"
         class="inline-block"
         :initial="{ y: '50%', opacity: 0, filter: 'blur(16px)' }"
-        :while-in-view="{ y: '18%', opacity: 1, filter: 'blur(0px)' }"
+        :while-in-view="{ y: '0%', opacity: 1, filter: 'blur(0px)' }"
         :in-view-options="{ once: true, amount: 0.2 }"
         :transition="{ type: 'spring', bounce: 0.2, duration: 1.6, delay: index * 0.07 }">
         <span class="bob inline-block" :style="float(index)">{{ letter }}</span>

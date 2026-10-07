@@ -16,6 +16,10 @@
 
 <template>
   <section id="barril" ref="section" class="relative bg-bg" :aria-label="t('label')">
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-full -z-10 h-[60dvh] bg-linear-to-b from-transparent to-bg" />
+    <div
+      class="pointer-events-none absolute inset-x-0 top-full -z-10 h-[60dvh] bg-linear-to-b from-bg to-transparent" />
     <div class="sticky top-0 h-dvh overflow-hidden">
       <KegStage :progress="progress" :beer="beer" class="absolute inset-0" />
       <div

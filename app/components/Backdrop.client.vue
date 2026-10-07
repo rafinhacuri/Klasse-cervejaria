@@ -8,11 +8,9 @@
   const visibility = useDocumentVisibility()
   const { width, height } = useWindowSize()
   const { pixelRatio } = useDevicePixelRatio()
-  const { y: scrollY } = useWindowScroll()
 
   let surface: Surface | null = null
   let lastPointer = { x: 0, y: 0, time: 0 }
-  let lastScroll = { y: 0, time: 0 }
 
   const { pause, resume } = useRafFn(
     ({ delta }) => {
@@ -40,13 +38,6 @@
 
   useEventListener(globalThis, 'pointermove', onPointer, { passive: true })
   useEventListener(document, 'pointerleave', () => surface?.release())
-
-  watch(scrollY, (y) => {
-    const now = performance.now()
-    const elapsed = Math.max(now - lastScroll.time, 8)
-    surface?.slosh(((y - lastScroll.y) / elapsed) * 1000)
-    lastScroll = { y, time: now }
-  })
 
   watch(visibility, (state) => {
     if (state === 'visible' && surface) resume()

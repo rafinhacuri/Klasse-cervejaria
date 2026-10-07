@@ -26,9 +26,6 @@
 
 <template>
   <section id="top" ref="section" class="relative min-h-dvh overflow-hidden">
-    <div
-      class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-bg/80 via-bg/30 to-transparent" />
-
     <Motion
       class="relative mx-auto flex min-h-dvh max-w-7xl flex-col justify-between px-5 pt-24 pb-10 sm:px-8 md:pt-28"
       :style="{ y: lift, opacity: fade }">
@@ -78,7 +75,7 @@
       <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <Motion
           as="p"
-          class="max-w-md text-lede text-pretty text-fg/85"
+          class="max-w-md text-lede text-pretty text-fg/90 float-shadow"
           :initial="{ opacity: 0, y: 16, filter: 'blur(8px)' }"
           :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
           :transition="{ type: 'spring', bounce: 0, duration: 1, delay: 1.1 }">
