@@ -25,7 +25,6 @@ export default defineNuxtConfig({
     head: {
       templateParams: { separator: '•' },
       meta: [{ name: 'theme-color', content: '#1a0d04' }],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
   css: ['~/assets/main.css'],
