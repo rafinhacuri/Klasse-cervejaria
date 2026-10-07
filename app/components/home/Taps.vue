@@ -1,7 +1,12 @@
 <script setup lang="ts">
   import { beers } from '~/data/content'
 
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    eyebrow: 'Feitos na nossa fábrica',
+    title: 'Nossos chopes',
+    lede: 'Passe por cada chope e veja a cor dele tomar o copo. Cada lote é acompanhado de perto pelo Mestre Gilson, do tanque ao barril.',
+    note: 'Preço por litro no barril. Também trabalhamos com chope Brahma e Skol para eventos.',
+  }
   const section = useTemplateRef<HTMLElement>('section')
   const active = ref('pilsen')
 
@@ -13,13 +18,13 @@
     <div class="mx-auto max-w-7xl px-5 sm:px-8">
       <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal>
-          <p class="font-mono text-micro text-gold uppercase">{{ t('eyebrow') }}</p>
+          <p class="font-mono text-micro text-gold uppercase">{{ text.eyebrow }}</p>
           <h2 class="mt-4 font-display text-display font-black uppercase">
-            {{ t('title') }}
+            {{ text.title }}
           </h2>
         </Reveal>
         <Reveal :delay="0.1" class="max-w-sm">
-          <p class="text-lede text-pretty text-fg/80">{{ t('lede') }}</p>
+          <p class="text-lede text-pretty text-fg/80">{{ text.lede }}</p>
         </Reveal>
       </div>
 
@@ -35,18 +40,7 @@
         </ul>
       </Reveal>
 
-      <p class="mt-6 font-mono text-micro text-muted uppercase">{{ t('note') }}</p>
+      <p class="mt-6 font-mono text-micro text-muted uppercase">{{ text.note }}</p>
     </div>
   </section>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "eyebrow": "Feitos na nossa fábrica",
-    "title": "Nossos chopes",
-    "lede": "Passe por cada chope e veja a cor dele tomar o copo. Cada lote é acompanhado de perto pelo Mestre Gilson, do tanque ao barril.",
-    "note": "Preço por litro no barril. Também trabalhamos com chope Brahma e Skol para eventos."
-  }
-}
-</i18n>

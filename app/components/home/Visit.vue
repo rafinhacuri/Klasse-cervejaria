@@ -1,7 +1,12 @@
 <script setup lang="ts">
   import { brand, hours } from '~/data/content'
 
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    eyebrow: 'Onde estamos',
+    title: 'Do tanque pro seu copo',
+    lede: 'Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Da fábrica direto para o balcão, o churrasco e a festa.',
+    hours: 'Atendimento',
+  }
   const section = useTemplateRef<HTMLElement>('section')
 
   useBackdrop(section, { beer: 'weiss', dim: 0.15 })
@@ -22,11 +27,11 @@
     <div class="mx-auto grid max-w-7xl items-start gap-6 px-5 sm:px-8 lg:grid-cols-[1.2fr_1fr]">
       <Reveal
         class="rounded-[2rem] border border-line bg-ink/60 p-6 shadow-float backdrop-blur-xl sm:p-10">
-        <p class="font-mono text-micro text-gold uppercase">{{ t('eyebrow') }}</p>
+        <p class="font-mono text-micro text-gold uppercase">{{ text.eyebrow }}</p>
         <h2 class="mt-4 font-display text-headline font-black text-balance uppercase">
-          {{ t('title') }}
+          {{ text.title }}
         </h2>
-        <p class="mt-5 max-w-md text-lede text-pretty text-muted">{{ t('lede') }}</p>
+        <p class="mt-5 max-w-md text-lede text-pretty text-muted">{{ text.lede }}</p>
 
         <p class="mt-8 flex items-center gap-2 font-semibold">
           <Icon name="ph:map-pin" class="size-5 text-gold" />
@@ -39,7 +44,7 @@
         class="rounded-[2rem] border border-line bg-ink/60 p-6 shadow-float backdrop-blur-xl sm:p-10">
         <p class="flex items-center gap-2 font-mono text-micro text-gold uppercase">
           <span class="live-dot relative size-1.5 rounded-full bg-[#30d158]" />
-          {{ t('hours') }}
+          {{ text.hours }}
         </p>
         <dl class="mt-6 divide-y divide-line">
           <div
@@ -72,14 +77,3 @@
     </p>
   </section>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "eyebrow": "Onde estamos",
-    "title": "Do tanque pro seu copo",
-    "lede": "Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Da fábrica direto para o balcão, o churrasco e a festa.",
-    "hours": "Atendimento"
-  }
-}
-</i18n>

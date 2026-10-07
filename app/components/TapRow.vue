@@ -9,7 +9,11 @@
 
   const emit = defineEmits<{ focus: [id: string] }>()
 
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    liter: 'o litro',
+    abv: 'Álcool',
+    ibu: 'Amargor',
+  }
   const row = useTemplateRef<HTMLElement>('row')
 
   useIntersectionObserver(
@@ -46,7 +50,7 @@
       <span class="block font-display text-[1.75rem] leading-none font-bold tabular-nums">
         {{ price(props.beer.price) }}
       </span>
-      <span class="font-mono text-micro text-muted uppercase">{{ t('liter') }}</span>
+      <span class="font-mono text-micro text-muted uppercase">{{ text.liter }}</span>
     </p>
 
     <p class="col-span-3 text-[0.9375rem] text-pretty text-muted lg:col-span-1">
@@ -55,25 +59,15 @@
 
     <div class="col-span-3 grid grid-cols-2 gap-4 lg:col-span-1">
       <Meter
-        :label="t('abv')"
+        :label="text.abv"
         :value="props.beer.abv"
         :max="8"
         :display="`${props.beer.abv.toLocaleString('pt-BR')}%`" />
       <Meter
-        :label="t('ibu')"
+        :label="text.ibu"
         :value="props.beer.ibu"
         :max="70"
         :display="String(props.beer.ibu)" />
     </div>
   </li>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "liter": "o litro",
-    "abv": "Álcool",
-    "ibu": "Amargor"
-  }
-}
-</i18n>

@@ -1,14 +1,23 @@
 <script setup lang="ts">
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    primary: 'Principal',
+    home: 'Klasse Cervejaria, voltar ao topo',
+    beers: 'Chopes',
+    keg: 'Barril',
+    events: 'Eventos',
+    visit: 'Onde estamos',
+    menu: 'Abrir menu',
+    close: 'Fechar menu',
+  }
   const { y } = useWindowScroll()
   const open = ref(false)
   const active = ref<string | null>(null)
 
   const links = computed(() => [
-    { id: 'chopes', label: t('beers') },
-    { id: 'barril', label: t('keg') },
-    { id: 'eventos', label: t('events') },
-    { id: 'visite', label: t('visit') },
+    { id: 'chopes', label: text.beers },
+    { id: 'barril', label: text.keg },
+    { id: 'eventos', label: text.events },
+    { id: 'visite', label: text.visit },
   ])
 
   const scrolled = computed(() => y.value > 8)
@@ -36,8 +45,8 @@
       :class="scrolled ? 'border-line glass' : 'border-transparent'">
       <nav
         class="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8"
-        :aria-label="t('primary')">
-        <a href="#top" class="flex items-center" :aria-label="t('home')">
+        :aria-label="text.primary">
+        <a href="#top" class="flex items-center" :aria-label="text.home">
           <Logo />
         </a>
 
@@ -63,7 +72,7 @@
         <DialogRoot v-model:open="open">
           <DialogTrigger
             class="-mr-2 flex size-11 items-center justify-center md:hidden"
-            :aria-label="t('menu')">
+            :aria-label="text.menu">
             <span class="relative block h-3 w-4.5">
               <span class="absolute inset-x-0 top-0 h-[1.5px] rounded-full bg-fg" />
               <span class="absolute inset-x-0 bottom-0 h-[1.5px] rounded-full bg-fg" />
@@ -80,7 +89,7 @@
                 </DialogTitle>
                 <DialogClose
                   class="-mr-2 flex size-11 items-center justify-center"
-                  :aria-label="t('close')">
+                  :aria-label="text.close">
                   <Icon name="ph:x" class="size-5" />
                 </DialogClose>
               </div>
@@ -108,18 +117,3 @@
     </div>
   </header>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "primary": "Principal",
-    "home": "Klasse Cervejaria, voltar ao topo",
-    "beers": "Chopes",
-    "keg": "Barril",
-    "events": "Eventos",
-    "visit": "Onde estamos",
-    "menu": "Abrir menu",
-    "close": "Fechar menu"
-  }
-}
-</i18n>

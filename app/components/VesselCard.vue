@@ -7,7 +7,9 @@
     beer: { type: String, default: 'pilsen' },
   })
 
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    from: 'a partir de',
+  }
   const card = useTemplateRef<HTMLElement>('card')
   const hovered = useElementHover(card)
   const seen = ref(false)
@@ -46,7 +48,7 @@
         <span class="text-gold">{{ props.vessel.liters }} L</span>
       </h3>
       <p class="text-right font-mono text-micro text-muted uppercase">
-        {{ t('from') }}
+        {{ text.from }}
         <span class="block font-display text-[1.5rem] leading-none font-bold text-fg normal-case">
           {{ price(props.vessel.price) }}
         </span>
@@ -57,11 +59,3 @@
     <p class="mt-3 text-pretty text-muted">{{ props.vessel.notes }}</p>
   </article>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "from": "a partir de"
-  }
-}
-</i18n>

@@ -1,6 +1,14 @@
 <script setup lang="ts">
   import { useScroll, useTransform } from 'motion-v'
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    eyebrow: 'Cervejaria artesanal · Rio de Janeiro',
+    title: 'Klasse Cervejaria',
+    subtitle: 'Cervejaria',
+    lede: 'Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Direto da nossa fábrica para o seu barril, gelado entre 0 e 2 °C.',
+    menu: 'Conhecer os chopes',
+    keg: 'Ver o barril',
+    hint: 'Passe o mouse no chope',
+  }
   const section = useTemplateRef<HTMLElement>('section')
 
   useBackdrop(section, { beer: 'pilsen', dim: 0 })
@@ -33,11 +41,11 @@
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, delay: 0.1 }">
         <span class="h-px w-8 bg-fg/50" />
-        {{ t('eyebrow') }}
+        {{ text.eyebrow }}
       </Motion>
 
       <div>
-        <h1 :aria-label="t('title')" class="float-shadow">
+        <h1 :aria-label="text.title" class="float-shadow">
           <span
             class="flex justify-between font-display text-giant font-black text-fg uppercase"
             aria-hidden="true">
@@ -64,7 +72,7 @@
             :initial="{ opacity: 0, letterSpacing: '1.1em' }"
             :animate="{ opacity: 1, letterSpacing: '0.6em' }"
             :transition="{ duration: 1.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }">
-            {{ t('subtitle') }}
+            {{ text.subtitle }}
           </Motion>
         </h1>
       </div>
@@ -76,7 +84,7 @@
           :initial="{ opacity: 0, y: 16, filter: 'blur(8px)' }"
           :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
           :transition="{ type: 'spring', bounce: 0, duration: 1, delay: 1.1 }">
-          {{ t('lede') }}
+          {{ text.lede }}
         </Motion>
 
         <Motion
@@ -87,7 +95,7 @@
           <a
             href="#chopes"
             class="group inline-flex h-12 items-center gap-2 rounded-full bg-fg px-6 text-[0.9375rem] font-semibold text-ink shadow-float transition-transform duration-150 active:scale-[0.97]">
-            {{ t('menu') }}
+            {{ text.menu }}
             <Icon
               name="ph:arrow-down"
               class="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -95,7 +103,7 @@
           <a
             href="#barril"
             class="inline-flex h-12 items-center gap-2 rounded-full border border-fg/30 px-5 text-[0.9375rem] font-medium text-fg backdrop-blur-sm transition-colors hover:bg-fg/10 active:scale-[0.97]">
-            {{ t('keg') }}
+            {{ text.keg }}
           </a>
         </Motion>
       </div>
@@ -107,21 +115,7 @@
       :initial="{ opacity: 0 }"
       :animate="{ opacity: 1 }"
       :transition="{ delay: 2.4, duration: 0.8 }">
-      {{ t('hint') }}
+      {{ text.hint }}
     </Motion>
   </section>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "eyebrow": "Cervejaria artesanal · Rio de Janeiro",
-    "title": "Klasse Cervejaria",
-    "subtitle": "Cervejaria",
-    "lede": "Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Direto da nossa fábrica para o seu barril, gelado entre 0 e 2 °C.",
-    "menu": "Conhecer os chopes",
-    "keg": "Ver o barril",
-    "hint": "Passe o mouse no chope"
-  }
-}
-</i18n>

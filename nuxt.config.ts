@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxtjs/seo',
-    '@nuxtjs/i18n',
     '@vueuse/nuxt',
     'nuxt-security',
     '@vercel/analytics',
@@ -23,6 +22,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      htmlAttrs: { lang: 'pt-BR' },
       templateParams: { separator: '•' },
       meta: [{ name: 'theme-color', content: '#1a0d04' }],
     },
@@ -32,8 +32,9 @@ export default defineNuxtConfig({
     url: 'https://klasse.com.br/',
     name: 'Klasse Cervejaria',
     description:
-      'Cervejaria artesanal: chope fresco tirado na hora, growlers para levar e chopeira para eventos.',
+      'Cervejaria artesanal: chope fresco tirado na hora, barris de inox e chopeira para eventos.',
     identity: { type: 'Organization' },
+    defaultLocale: 'pt-BR',
   },
   devServer: {
     host: DEV_URL,
@@ -75,10 +76,6 @@ export default defineNuxtConfig({
         subsets: ['latin'],
       },
     ],
-  },
-  i18n: {
-    defaultLocale: 'pt',
-    locales: [{ code: 'pt', language: 'pt-BR', name: 'Português (BR)' }],
   },
   icon: {
     serverBundle: { collections: ['ph', 'simple-icons'] },

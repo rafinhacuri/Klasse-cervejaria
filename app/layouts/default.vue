@@ -1,5 +1,7 @@
 <script setup lang="ts">
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    skip: 'Pular para o conteúdo',
+  }
 </script>
 
 <template>
@@ -7,7 +9,7 @@
     <a
       href="#main"
       class="sr-only z-70 rounded-full bg-fg px-4 py-2 text-sm text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
-      {{ t('skip') }}
+      {{ text.skip }}
     </a>
     <Header />
     <Backdrop />
@@ -18,9 +20,3 @@
     <AgeGate />
   </MotionConfig>
 </template>
-
-<i18n lang="json">
-{
-  "pt": { "skip": "Pular para o conteúdo" }
-}
-</i18n>

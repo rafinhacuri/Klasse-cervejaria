@@ -1,5 +1,28 @@
 <script setup lang="ts">
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    label: 'Como enchemos um barril de 20 litros',
+    picker: 'Escolha o chope do barril',
+    cold: {
+      eyebrow: 'Fábrica',
+      title: 'Do tanque direto pro barril.',
+      body: 'O chope sai dos nossos tanques de maturação, gelado e sem filtro de atalho. O barril de inox é lavado, sanitizado e pressurizado antes de receber uma gota.',
+    },
+    pour: {
+      eyebrow: 'Enchimento',
+      title: 'Pela válvula, sem pegar ar.',
+      body: 'O engate encaixa na válvula e o chope desce pela linha até encher os 20 litros. Fechado do tanque ao barril, sem oxigênio no caminho.',
+    },
+    head: {
+      eyebrow: 'Frio',
+      title: 'Inox suando é chope no ponto.',
+      body: 'O barril sai da câmara fria entre 0 e 2 °C. Quando o inox embaça até a borda, está cheio e gelado do jeito certo.',
+    },
+    seal: {
+      eyebrow: 'Lacre',
+      title: 'Lacrou, levou.',
+      body: 'Lacre na válvula e data de envase no barril. É só ligar na chopeira e servir. Na festa, a gente leva, instala e busca.',
+    },
+  }
   const section = useTemplateRef<HTMLElement>('section')
   const beer = ref('pilsen')
 
@@ -15,7 +38,7 @@
 </script>
 
 <template>
-  <section id="barril" ref="section" class="relative bg-bg" :aria-label="t('label')">
+  <section id="barril" ref="section" class="relative bg-bg" :aria-label="text.label">
     <div
       class="pointer-events-none absolute inset-x-0 bottom-full -z-10 h-[60dvh] bg-linear-to-b from-transparent to-bg" />
     <div
@@ -33,7 +56,7 @@
           <LitersGauge class="hidden lg:flex" :liters="liters" :total="KEG_LITERS" />
           <BeerPicker
             v-model="beer"
-            :label="t('picker')"
+            :label="text.picker"
             :only="['pilsen', 'ipa', 'red', 'stout']" />
         </div>
       </div>
@@ -45,39 +68,10 @@
         :key="step"
         :index="index + 1"
         :total="steps.length"
-        :title="t(`${step}.title`)"
-        :body="t(`${step}.body`)"
-        :eyebrow="t(`${step}.eyebrow`)" />
+        :title="text[step].title"
+        :body="text[step].body"
+        :eyebrow="text[step].eyebrow" />
       <div class="h-[40dvh]" />
     </div>
   </section>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "label": "Como enchemos um barril de 20 litros",
-    "picker": "Escolha o chope do barril",
-    "cold": {
-      "eyebrow": "Fábrica",
-      "title": "Do tanque direto pro barril.",
-      "body": "O chope sai dos nossos tanques de maturação, gelado e sem filtro de atalho. O barril de inox é lavado, sanitizado e pressurizado antes de receber uma gota."
-    },
-    "pour": {
-      "eyebrow": "Enchimento",
-      "title": "Pela válvula, sem pegar ar.",
-      "body": "O engate encaixa na válvula e o chope desce pela linha até encher os 20 litros. Fechado do tanque ao barril, sem oxigênio no caminho."
-    },
-    "head": {
-      "eyebrow": "Frio",
-      "title": "Inox suando é chope no ponto.",
-      "body": "O barril sai da câmara fria entre 0 e 2 °C. Quando o inox embaça até a borda, está cheio e gelado do jeito certo."
-    },
-    "seal": {
-      "eyebrow": "Lacre",
-      "title": "Lacrou, levou.",
-      "body": "Lacre na válvula e data de envase no barril. É só ligar na chopeira e servir. Na festa, a gente leva, instala e busca."
-    }
-  }
-}
-</i18n>

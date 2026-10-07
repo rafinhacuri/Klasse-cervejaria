@@ -4,7 +4,22 @@
   import type { Pace } from '~/utils/party'
   import { groupKegs, isPace, kegsFor, paces, partyLiters } from '~/utils/party'
 
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    title: 'Calculadora de chope',
+    guests: 'Convidados',
+    people: 'pessoas',
+    hours: 'Duração',
+    hoursUnit: 'horas',
+    pace: 'Ritmo da festa',
+    paces: {
+      calm: 'Tranquila',
+      lively: 'Animada',
+      endless: 'Sem hora',
+    },
+    result: 'Você vai precisar de',
+    liters: 'litros',
+    keg: 'barril de',
+  }
 
   const guests = ref(40)
   const hours = ref(5)
@@ -21,24 +36,24 @@
 
 <template>
   <div class="rounded-[2rem] border border-line bg-ink/60 p-6 shadow-float backdrop-blur-xl sm:p-8">
-    <p class="font-mono text-micro text-gold uppercase">{{ t('title') }}</p>
+    <p class="font-mono text-micro text-gold uppercase">{{ text.title }}</p>
 
     <div class="mt-8 flex flex-col gap-8">
       <RangeField
         v-model="guests"
-        :label="t('guests')"
-        :unit="t('people')"
+        :label="text.guests"
+        :unit="text.people"
         :min="10"
         :max="300"
         :step="5" />
-      <RangeField v-model="hours" :label="t('hours')" :unit="t('hoursUnit')" :min="2" :max="12" />
+      <RangeField v-model="hours" :label="text.hours" :unit="text.hoursUnit" :min="2" :max="12" />
 
       <div>
-        <p class="font-mono text-micro text-muted uppercase" aria-hidden="true">{{ t('pace') }}</p>
+        <p class="font-mono text-micro text-muted uppercase" aria-hidden="true">{{ text.pace }}</p>
         <ToggleGroupRoot
           :model-value="pace"
           type="single"
-          :aria-label="t('pace')"
+          :aria-label="text.pace"
           class="mt-3 grid grid-cols-3 gap-1 rounded-2xl bg-fg/6 p-1"
           @update:model-value="choose">
           <ToggleGroupItem
@@ -52,16 +67,16 @@
               layout-id="pace"
               class="absolute inset-0 rounded-xl bg-fg"
               :transition="{ type: 'spring', bounce: 0.15, duration: 0.45 }" />
-            <span class="relative">{{ t(`paces.${option}`) }}</span>
+            <span class="relative">{{ text.paces[option] }}</span>
           </ToggleGroupItem>
         </ToggleGroupRoot>
       </div>
     </div>
 
     <div class="mt-10 border-t border-line pt-8" aria-live="polite">
-      <p class="font-mono text-micro text-muted uppercase">{{ t('result') }}</p>
+      <p class="font-mono text-micro text-muted uppercase">{{ text.result }}</p>
       <p class="mt-2 font-display text-[5.5rem] leading-[0.85] font-black text-gold tabular-nums">
-        {{ Math.round(shown) }}<span class="ml-2 text-[2rem] text-fg">{{ t('liters') }}</span>
+        {{ Math.round(shown) }}<span class="ml-2 text-[2rem] text-fg">{{ text.liters }}</span>
       </p>
       <ul class="mt-5 flex flex-wrap gap-2">
         <li
@@ -69,30 +84,9 @@
           :key="keg.size"
           class="flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 text-[0.8125rem]">
           <Icon name="ph:cylinder" class="size-4 text-gold" />
-          {{ t('keg', { count: keg.count, size: keg.size }) }}
+          {{ keg.count }} × {{ text.keg }} {{ keg.size }} L
         </li>
       </ul>
     </div>
   </div>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "title": "Calculadora de chope",
-    "guests": "Convidados",
-    "people": "pessoas",
-    "hours": "Duração",
-    "hoursUnit": "horas",
-    "pace": "Ritmo da festa",
-    "paces": {
-      "calm": "Tranquila",
-      "lively": "Animada",
-      "endless": "Sem hora"
-    },
-    "result": "Você vai precisar de",
-    "liters": "litros",
-    "keg": "{count} × barril de {size} L"
-  }
-}
-</i18n>

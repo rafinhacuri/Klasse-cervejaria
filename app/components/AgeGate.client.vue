@@ -1,5 +1,15 @@
 <script setup lang="ts">
-  const { t } = useI18n({ useScope: 'local' })
+  const text = {
+    title: 'Você tem 18 anos ou mais?',
+    body: 'Aqui só entra quem já pode brindar. Confirme sua idade para ver os chopes.',
+    yes: 'Sim, tenho 18+',
+    no: 'Ainda não',
+    refused: {
+      title: 'Volte daqui a pouco.',
+      body: 'Quando fizer 18, a primeira rodada é por nossa conta. Até lá, a gente guarda o seu lugar no balcão.',
+    },
+    law: 'Venda proibida para menores de 18 anos',
+  }
   const adult = useLocalStorage('klasse:adult', false)
   const refused = ref(false)
   const ready = ref(false)
@@ -23,43 +33,27 @@
         <Logo class="justify-center" />
         <AlertDialogTitle
           class="mt-8 font-display text-headline font-extrabold text-balance uppercase">
-          {{ refused ? t('refused.title') : t('title') }}
+          {{ refused ? text.refused.title : text.title }}
         </AlertDialogTitle>
         <AlertDialogDescription class="mx-auto mt-4 max-w-xs text-pretty text-muted">
-          {{ refused ? t('refused.body') : t('body') }}
+          {{ refused ? text.refused.body : text.body }}
         </AlertDialogDescription>
 
         <div v-if="!refused" class="mt-8 flex flex-col gap-2.5 sm:flex-row">
           <AlertDialogAction
             class="h-12 flex-1 rounded-full bg-gold px-6 font-semibold text-ink transition-transform duration-150 active:scale-[0.97]"
             @click="confirm">
-            {{ t('yes') }}
+            {{ text.yes }}
           </AlertDialogAction>
           <AlertDialogCancel
             class="h-12 flex-1 rounded-full border border-line px-6 font-medium transition-colors hover:bg-fg/5 active:scale-[0.97]"
             @click.prevent="refused = true">
-            {{ t('no') }}
+            {{ text.no }}
           </AlertDialogCancel>
         </div>
 
-        <p class="mt-8 font-mono text-micro text-muted uppercase">{{ t('law') }}</p>
+        <p class="mt-8 font-mono text-micro text-muted uppercase">{{ text.law }}</p>
       </AlertDialogContent>
     </AlertDialogPortal>
   </AlertDialogRoot>
 </template>
-
-<i18n lang="json">
-{
-  "pt": {
-    "title": "Você tem 18 anos ou mais?",
-    "body": "Aqui só entra quem já pode brindar. Confirme sua idade para ver os chopes.",
-    "yes": "Sim, tenho 18+",
-    "no": "Ainda não",
-    "refused": {
-      "title": "Volte daqui a pouco.",
-      "body": "Quando fizer 18, a primeira rodada é por nossa conta. Até lá, a gente guarda o seu lugar no balcão."
-    },
-    "law": "Venda proibida para menores de 18 anos"
-  }
-}
-</i18n>
