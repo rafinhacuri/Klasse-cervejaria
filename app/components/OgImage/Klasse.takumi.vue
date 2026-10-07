@@ -35,7 +35,7 @@
     }
   })
 
-  const facts = ['São João Batista · SC', 'Barris de 20, 30 e 50 L', '(48) 99969-8484']
+  const facts = ['Rio de Janeiro', 'Barris de 20, 30 e 50 L', 'Chopes artesanais']
 
   function circle(item: { x: number; y: number; size: number }): Record<string, string> {
     return {

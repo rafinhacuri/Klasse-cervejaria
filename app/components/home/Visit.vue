@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { contact, hours, whatsappLink } from '~/data/content'
+  import { brand, hours } from '~/data/content'
 
   const { t } = useI18n({ useScope: 'local' })
   const section = useTemplateRef<HTMLElement>('section')
@@ -28,29 +28,10 @@
         </h2>
         <p class="mt-5 max-w-md text-lede text-pretty text-muted">{{ t('lede') }}</p>
 
-        <address class="mt-8 not-italic">
-          <p class="font-semibold">{{ contact.address }}</p>
-          <p class="text-muted">{{ contact.district }}</p>
-        </address>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            :href="whatsappLink(t('message'))"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex h-12 items-center gap-2 rounded-full bg-gold px-6 font-semibold text-ink transition-transform duration-150 active:scale-[0.97]">
-            <Icon name="ph:whatsapp-logo" class="size-5" />
-            {{ contact.phone }}
-          </a>
-          <a
-            :href="contact.maps"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex h-12 items-center gap-2 rounded-full border border-line px-6 font-medium transition-colors hover:bg-fg/5 active:scale-[0.97]">
-            <Icon name="ph:map-pin" class="size-5" />
-            {{ t('directions') }}
-          </a>
-        </div>
+        <p class="mt-8 flex items-center gap-2 font-semibold">
+          <Icon name="ph:map-pin" class="size-5 text-gold" />
+          {{ brand.city }}
+        </p>
       </Reveal>
 
       <Reveal
@@ -95,12 +76,10 @@
 <i18n lang="json">
 {
   "pt": {
-    "eyebrow": "Fale com a gente",
-    "title": "Peça seu barril",
-    "lede": "Encomende pelo WhatsApp ou passe na fábrica para buscar. Para eventos, reserve com antecedência que a gente separa o barril e a chopeira.",
-    "directions": "Como chegar",
-    "hours": "Atendimento",
-    "message": "Olá, Klasse! Quero saber mais sobre os barris de chope."
+    "eyebrow": "Onde estamos",
+    "title": "Do tanque pro seu copo",
+    "lede": "Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Da fábrica direto para o balcão, o churrasco e a festa.",
+    "hours": "Atendimento"
   }
 }
 </i18n>

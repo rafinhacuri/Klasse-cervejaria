@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { whatsappLink } from '~/data/content'
-
   const { t } = useI18n({ useScope: 'local' })
   const { y } = useWindowScroll()
   const open = ref(false)
@@ -14,7 +12,6 @@
   ])
 
   const scrolled = computed(() => y.value > 8)
-  const order = computed(() => whatsappLink(t('message')))
 
   function spy(): void {
     const middle = globalThis.innerHeight * 0.4
@@ -61,15 +58,6 @@
               </a>
             </li>
           </ul>
-
-          <a
-            :href="order"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex h-9 items-center gap-2 rounded-full bg-gold px-4 text-[0.8125rem] font-semibold text-ink transition-transform duration-150 active:scale-[0.97]">
-            <Icon name="ph:whatsapp-logo" class="size-4" />
-            {{ t('order') }}
-          </a>
         </div>
 
         <DialogRoot v-model:open="open">
@@ -113,21 +101,6 @@
                   </Motion>
                 </li>
               </ul>
-
-              <Motion
-                class="mt-auto"
-                :initial="{ opacity: 0, y: 12 }"
-                :animate="{ opacity: 1, y: 0 }"
-                :transition="{ delay: 0.25, duration: 0.4 }">
-                <a
-                  :href="order"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-base font-semibold text-ink">
-                  <Icon name="ph:whatsapp-logo" class="size-5" />
-                  {{ t('order') }}
-                </a>
-              </Motion>
             </DialogContent>
           </DialogPortal>
         </DialogRoot>
@@ -145,8 +118,6 @@
     "keg": "Barril",
     "events": "Eventos",
     "visit": "Onde estamos",
-    "order": "Pedir agora",
-    "message": "Olá, Klasse! Quero fazer um pedido.",
     "menu": "Abrir menu",
     "close": "Fechar menu"
   }

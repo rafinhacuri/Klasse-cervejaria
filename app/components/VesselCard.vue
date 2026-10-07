@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import type { Vessel } from '~/data/content'
-  import { beerById, price, whatsappLink } from '~/data/content'
+  import { beerById, price } from '~/data/content'
 
   const props = defineProps({
     vessel: { type: Object as PropType<Vessel>, required: true },
@@ -25,7 +25,6 @@
     if (hovered.value) return 0.96
     return seen.value ? 0.72 : 0
   })
-  const order = computed(() => whatsappLink(t('message', { liters: props.vessel.liters })))
 </script>
 
 <template>
@@ -55,25 +54,14 @@
     </div>
 
     <p class="mt-2 font-mono text-micro text-malt uppercase">{{ props.vessel.serves }}</p>
-    <p class="mt-3 mb-8 text-pretty text-muted">{{ props.vessel.notes }}</p>
-
-    <a
-      :href="order"
-      target="_blank"
-      rel="noopener"
-      class="mt-auto inline-flex h-11 items-center justify-center gap-2 self-start rounded-full border border-line px-5 pt-0 text-[0.875rem] font-medium transition-colors group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
-      {{ t('order') }}
-      <Icon name="ph:arrow-up-right" class="size-4" />
-    </a>
+    <p class="mt-3 text-pretty text-muted">{{ props.vessel.notes }}</p>
   </article>
 </template>
 
 <i18n lang="json">
 {
   "pt": {
-    "from": "a partir de",
-    "order": "Encomendar",
-    "message": "Olá, Klasse! Quero encomendar um barril de {liters} L."
+    "from": "a partir de"
   }
 }
 </i18n>

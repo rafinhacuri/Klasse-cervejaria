@@ -1,8 +1,5 @@
 <script setup lang="ts">
   import { useScroll, useTransform } from 'motion-v'
-
-  import { whatsappLink } from '~/data/content'
-
   const { t } = useI18n({ useScope: 'local' })
   const section = useTemplateRef<HTMLElement>('section')
 
@@ -96,12 +93,9 @@
               class="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
           </a>
           <a
-            :href="whatsappLink(t('message'))"
-            target="_blank"
-            rel="noopener"
+            href="#barril"
             class="inline-flex h-12 items-center gap-2 rounded-full border border-fg/30 px-5 text-[0.9375rem] font-medium text-fg backdrop-blur-sm transition-colors hover:bg-fg/10 active:scale-[0.97]">
-            <Icon name="ph:whatsapp-logo" class="size-4" />
-            {{ t('order') }}
+            {{ t('keg') }}
           </a>
         </Motion>
       </div>
@@ -121,13 +115,12 @@
 <i18n lang="json">
 {
   "pt": {
-    "eyebrow": "Cervejaria artesanal · São João Batista, SC",
+    "eyebrow": "Cervejaria artesanal · Rio de Janeiro",
     "title": "Klasse Cervejaria",
     "subtitle": "Cervejaria",
     "lede": "Há 16 anos fazendo chope com pioneirismo, experiência e qualidade. Direto da nossa fábrica para o seu barril, gelado entre 0 e 2 °C.",
     "menu": "Conhecer os chopes",
-    "order": "Pedir no WhatsApp",
-    "message": "Olá, Klasse! Quero fazer um pedido.",
+    "keg": "Ver o barril",
     "hint": "Passe o mouse no chope"
   }
 }

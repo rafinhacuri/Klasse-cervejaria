@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import { TransitionPresets } from '@vueuse/core'
 
-  import { whatsappLink } from '~/data/content'
   import type { Pace } from '~/utils/party'
   import { groupKegs, isPace, kegsFor, paces, partyLiters } from '~/utils/party'
 
@@ -14,17 +13,6 @@
   const liters = computed(() => partyLiters(guests.value, hours.value, pace.value))
   const kegs = computed(() => groupKegs(kegsFor(liters.value)))
   const shown = useTransition(liters, { duration: 700, transition: TransitionPresets.easeOutCubic })
-
-  const booking = computed(() =>
-    whatsappLink(
-      t('message', {
-        guests: guests.value,
-        hours: hours.value,
-        liters: liters.value,
-        kegs: kegs.value.map((keg) => `${keg.count} × ${keg.size} L`).join(' + '),
-      }),
-    ),
-  )
 
   function choose(value: unknown): void {
     if (isPace(value)) pace.value = value
@@ -85,15 +73,6 @@
         </li>
       </ul>
     </div>
-
-    <a
-      :href="booking"
-      target="_blank"
-      rel="noopener"
-      class="mt-8 flex h-13 items-center justify-center gap-2 rounded-full bg-gold font-semibold text-ink transition-transform duration-150 active:scale-[0.98]">
-      <Icon name="ph:whatsapp-logo" class="size-5" />
-      {{ t('book') }}
-    </a>
   </div>
 </template>
 
@@ -113,9 +92,7 @@
     },
     "result": "Você vai precisar de",
     "liters": "litros",
-    "keg": "{count} × barril de {size} L",
-    "book": "Reservar chopeira",
-    "message": "Olá, Klasse! Quero reservar chopeira para uma festa: {guests} convidados, {hours} horas, cerca de {liters} litros ({kegs})."
+    "keg": "{count} × barril de {size} L"
   }
 }
 </i18n>

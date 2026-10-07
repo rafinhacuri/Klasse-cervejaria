@@ -23,13 +23,6 @@ interface Vessel {
   notes: string
 }
 
-interface Social {
-  name: string
-  handle: string
-  icon: string
-  href: string
-}
-
 interface Hours {
   days: string
   time: string
@@ -37,15 +30,7 @@ interface Hours {
 
 const brand = {
   full: 'Klasse Cervejaria',
-}
-
-const contact = {
-  whatsapp: '5548999698484',
-  phone: '(48) 99969-8484',
-  email: 'contato@klasse.com.br',
-  address: 'Klasse Cervejaria',
-  district: 'São João Batista · Santa Catarina',
-  maps: 'https://maps.google.com/?q=Klasse+Cervejaria+S%C3%A3o+Jo%C3%A3o+Batista+SC',
+  city: 'Rio de Janeiro',
 }
 
 const hours: Hours[] = [
@@ -162,32 +147,7 @@ const vessels: Vessel[] = [
   },
 ]
 
-const socials: Social[] = [
-  {
-    name: 'Instagram',
-    handle: '@klasse_cervejaria',
-    icon: 'ph:instagram-logo',
-    href: 'https://www.instagram.com/klasse_cervejaria/',
-  },
-  {
-    name: 'WhatsApp',
-    handle: contact.phone,
-    icon: 'ph:whatsapp-logo',
-    href: `https://wa.me/${contact.whatsapp}`,
-  },
-  {
-    name: 'Email',
-    handle: contact.email,
-    icon: 'ph:envelope-simple',
-    href: `mailto:${contact.email}`,
-  },
-]
-
 const kegSizes = [50, 30, 20]
-
-function whatsappLink(message: string): string {
-  return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`
-}
 
 function price(value: number): string {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
@@ -197,5 +157,5 @@ function beerById(id: string): Beer {
   return beers.find((beer) => beer.id === id) ?? pick(beers, 0)
 }
 
-export type { Beer, Hours, Social, Vessel }
-export { beerById, beers, brand, contact, hours, kegSizes, price, socials, vessels, whatsappLink }
+export type { Beer, Hours, Vessel }
+export { beerById, beers, brand, hours, kegSizes, price, vessels }
