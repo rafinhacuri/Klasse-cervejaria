@@ -2,11 +2,16 @@
   const { t } = useI18n({ useScope: 'local' })
   const adult = useLocalStorage('klasse:adult', false)
   const refused = ref(false)
-  const open = computed(() => !adult.value)
+  const ready = ref(false)
+  const open = computed(() => ready.value && !adult.value)
 
   function confirm(): void {
     adult.value = true
   }
+
+  onNuxtReady(() => {
+    ready.value = true
+  })
 </script>
 
 <template>
